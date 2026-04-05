@@ -4,6 +4,7 @@ cask "inkwell" do
 
   url "https://github.com/goldberg-consulting/measured.one.inkwell-extension/releases/download/v#{version}/inkwell-#{version}.vsix"
   name "Inkwell"
+  container type: :naked
   desc "Markdown to publication-quality PDF with live preview, Pandoc + LaTeX compilation, and runnable code blocks"
   homepage "https://github.com/goldberg-consulting/measured.one.inkwell-extension"
 
