@@ -1,6 +1,6 @@
 cask "inkwell" do
-  version "0.2.4"
-  sha256 "f5c111c0631020369c1c226104a95752cee0ef984fda1965c2b2d101e437c85f"
+  version "0.2.5"
+  sha256 "4b0c4b611a5840d42ae326ae0b1e58d145017c4a324c4ea378cd4609e717a1fe"
 
   url "https://github.com/goldberg-consulting/measured.one.inkwell-extension/releases/download/v#{version}/inkwell-#{version}.vsix"
   name "Inkwell"
