@@ -1,39 +1,45 @@
 # Homebrew Tap for Inkwell
 
-Inkwell turns markdown into publication-quality PDFs with live preview, Pandoc + LaTeX compilation, runnable code blocks, and journal template management.
+Inkwell brings Markdown, live previews, runnable analysis, citations, and PDF templates to Cursor and VS Code.
 
 ## Install
 
-```bash
-brew tap goldberg-consulting/inkwell
-brew install --cask inkwell
+```sh
+brew install --cask goldberg-consulting/inkwell/inkwell
 ```
 
-This installs:
+The cask installs the same verified VSIX available from [GitHub Releases](https://github.com/goldberg-consulting/measured.one.inkwell-extension/releases). It uses Inkwell's shared installer to select an installed editor, check the PDF toolchain, and compile a verification PDF. If both editors are installed, Cursor is selected by default.
 
-- The **Inkwell** extension in Cursor or VS Code
-- **Pandoc** and **pandoc-crossref**
-- **MacTeX** (full TeX distribution with XeLaTeX and pdfLaTeX)
+Setup preserves a working TeX installation and installs MacTeX when no TeX installation exists. It installs missing PDF tools and Mermaid support as needed. A first setup may ask for the administrator password when system packages are required.
 
-After installation, install Mermaid CLI for diagram support in PDFs:
+Reload the editor and choose **Inkwell: New Project** to begin.
 
-```bash
-npm install -g @mermaid-js/mermaid-cli
+## Upgrade
+
+```sh
+brew update
+brew upgrade --cask goldberg-consulting/inkwell/inkwell
 ```
 
 ## Uninstall
 
-```bash
-brew uninstall --cask inkwell
+```sh
+brew uninstall --cask goldberg-consulting/inkwell/inkwell
 ```
+
+Removal uses Inkwell's version-aware editor uninstaller. Projects, documents, bibliographies, scripts, history, PDFs, and shared PDF tools are preserved.
 
 ## Requirements
 
-- macOS 12 (Monterey) or later
-- [Homebrew](https://brew.sh)
-- [Cursor](https://cursor.com) or [VS Code](https://code.visualstudio.com) with shell command installed (`cursor` or `code` on PATH)
+- macOS and [Homebrew](https://brew.sh)
+- [Cursor](https://cursor.com) or [VS Code](https://code.visualstudio.com)
 
-## Links
+## Maintainer checks
 
-- [Inkwell extension repository](https://github.com/goldberg-consulting/measured.one.inkwell-extension)
-- [Inkwell releases](https://github.com/goldberg-consulting/measured.one.inkwell-extension/releases)
+```sh
+node --test tests/lifecycle.test.cjs
+brew style --cask goldberg-consulting/inkwell/inkwell
+brew audit --cask goldberg-consulting/inkwell/inkwell
+```
+
+The lifecycle tests execute the cask's actual commands with a fixture VSIX and mocked shared installer. They check argument handling, error propagation, and that the cask wrapper does not remove user files. Release validation must also exercise the real packaged installer and a clean editor profile.
