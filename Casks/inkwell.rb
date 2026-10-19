@@ -10,7 +10,6 @@ cask "inkwell" do
   depends_on formula: "node"
   depends_on formula: "pandoc"
   depends_on formula: "pandoc-crossref"
-
   container type: :naked
 
   installer script: {
