@@ -4,17 +4,18 @@ cask "inkwell" do
 
   url "https://github.com/goldberg-consulting/measured.one.inkwell-extension/releases/download/v#{version}/inkwell-#{version}.vsix"
   name "Inkwell"
-  container type: :naked
-  desc "Markdown to publication-quality PDF with live preview, Pandoc + LaTeX compilation, and runnable code blocks"
+  desc "Markdown editor extension with live preview, runnable code, and PDF publishing"
   homepage "https://github.com/goldberg-consulting/measured.one.inkwell-extension"
 
+  depends_on formula: "node"
   depends_on formula: "pandoc"
   depends_on formula: "pandoc-crossref"
-  depends_on formula: "node"
+
+  container type: :naked
 
   installer script: {
     executable: "/bin/bash",
-    args:       ["-c", <<~SH, "--", "#{staged_path}", version.to_s, "#{HOMEBREW_PREFIX}/bin/node"],
+    args:       ["-c", <<~SH, "--", staged_path.to_s, version.to_s, "#{HOMEBREW_PREFIX}/bin/node"],
       set -euo pipefail
       /usr/bin/unzip -q -o "$1/inkwell-$2.vsix" -d "$1/payload"
       exec "$3" "$1/payload/extension/out/install-cli.js" \
