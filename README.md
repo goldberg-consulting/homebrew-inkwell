@@ -8,7 +8,7 @@ Inkwell brings Markdown, live previews, runnable analysis, citations, and PDF te
 brew install --cask goldberg-consulting/inkwell/inkwell
 ```
 
-The cask installs the same verified VSIX available from [GitHub Releases](https://github.com/goldberg-consulting/measured.one.inkwell-extension/releases). It uses Inkwell's shared installer to select an installed editor, check the PDF toolchain, and compile a verification PDF. If both editors are installed, Cursor is selected by default.
+The cask installs the same verified VSIX available from [GitHub Releases](https://github.com/goldberg-consulting/measured.one.inkwell-extension/releases). It uses Inkwell's shared installer to detect installed editors, check the PDF toolchain, and compile a verification PDF. If both editors are installed, both receive the extension.
 
 Setup preserves a working TeX installation and installs MacTeX when no TeX installation exists. It installs missing PDF tools and Mermaid support as needed. A first setup may ask for the administrator password when system packages are required.
 
